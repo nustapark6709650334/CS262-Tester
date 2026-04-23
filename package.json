@@ -4,21 +4,25 @@
   "description": "hello",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:jest": "jest",
+    "test:newman": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli",
+    "test:newman:html": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export evidence/postman-auth-report.html --reporter-htmlextra-title \"CS262 Tester - Integration Report\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nustapark6709650334/CS262-Tester.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/nustapark6709650334/CS262-Tester/issues"
-  },
-  "homepage": "https://github.com/nustapark6709650334/CS262-Tester#readme",
   "devDependencies": {
-    "jest": "^30.3.0"
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "<rootDir>/src/test/js/**/*.test.js"
+    ],
+    "verbose": true
   }
 }

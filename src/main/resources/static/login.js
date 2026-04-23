@@ -48,33 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     // B. ดึง username ที่ได้จาก Backend
                     const userCode = result.username; 
 
-                    // C. ตรวจสอบรหัส 2 ตัวกลาง (08 หรือ 09)
-                    if (userCode && userCode.length >= 4) {
-                        // ดึงอักขระตัวที่ 3 และ 4 (index ที่ 2 และ 3)
-                        const programCode = userCode.substring(4, 6); 
-
-                        if (programCode === '65') {
-                            // ไปหน้าภาคพิเศษ (อ้างอิงจากไฟล์ในรูปแรกของคุณ)
-                            alert('เข้าสู่ระบบสำเร็จ (ภาคพิเศษ)');
-                            window.location.href = 'main.html'; 
-                        
-                        } else if (programCode === '61') {
-                            // ไปหน้าภาคปกติ (อ้างอิงจากไฟล์ในรูปแรกของคุณ)
-                            alert('เข้าสู่ระบบสำเร็จ (ภาคปกติ)');
-                            window.location.href = 'mainNormal.html';
-                        
-                        } else {
-                            // กรณีอื่นๆ (เช่น รหัสไม่ตรงเงื่อนไข หรือเป็น admin/staff)
-                            alert('เข้าสู่ระบบสำเร็จ');
-                            window.location.href = 'index.html'; // ไปหน้าหลัก
-                        }
-                    
+                    // C. ตัดสินใจปลายทางด้วย AuthUtils (ทดสอบแยกได้ใน Jest)
+                    const route = window.AuthUtils.resolveProgramRoute(userCode);
+                    if (route.program === 'special') {
+                        alert('เข้าสู่ระบบสำเร็จ (ภาคพิเศษ)');
+                    } else if (route.program === 'normal') {
+                        alert('เข้าสู่ระบบสำเร็จ (ภาคปกติ)');
                     } else {
-                        // กรณีได้ username กลับมา แต่รูปแบบแปลกๆ
-                        console.error('Invalid username format received:', userCode);
-                        alert('เข้าสู่ระบบสำเร็จ (ไม่ทราบประเภท)');
-                        window.location.href = 'index.html'; // ไปหน้าหลัก
+                        console.warn('Unrecognised username format for routing:', userCode);
+                        alert('เข้าสู่ระบบสำเร็จ');
                     }
+                    window.location.href = route.url;
 
                 } else {
                     // 5.2 ถ้า Backend ตอบกลับมาว่า Error (เช่น รหัสผ่านผิด)

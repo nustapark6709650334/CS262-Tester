@@ -2,3 +2,37 @@ node_modules/
 target/
 .classpath
 .project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# macOS specific
+*.DS_Store
+
+# Build output
+/bin/
+/target/
+
+# Node / Jest / Newman
+node_modules/
+npm-debug.log*
+evidence/
