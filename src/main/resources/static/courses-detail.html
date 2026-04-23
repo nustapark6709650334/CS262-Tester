@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>CSTU COURSES EXPLORER</title>
+    <link href="https://fonts.googleapis.com/css?family=Kanit:300,400,500,700&amp;subset=thai" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="toppage">
+        <nav aria-label="navigation">
+            <button class="btn-back" onclick="history.back()">ย้อนกลับ</button>
+        </nav>
+        <h2 id="course-header">กำลังโหลดข้อมูล...</h2>
+        <p id="course-credit"></p>
+    </header>
+
+    <main class="container">
+        <section class="course-card">
+            <h3>รายละเอียดรายวิชา</h3>
+            <p id="course-description">กำลังโหลด...</p>
+        </section>
+
+        <section class="course-card">
+            <h3>วิชาบังคับก่อน (Prerequisite)</h3>
+            <div id="prerequisite-courses">
+                <p>กำลังโหลด...</p>
+            </div>
+        </section>
+
+        <section class="course-card">
+            <h3>วิชาตัวต่อ (Next Courses)</h3>
+            <div id="next-courses">
+                <p>กำลังโหลด...</p>
+            </div>
+        </section>
+    </main>
+
+   <footer class="footer"><!-- ส่วนติดต่อข้อมูล -->
+    <div class="footer__inner">
+
+      <div class="fcol left">
+        <div class="logo"><img src="photo/whiteBG-CSTU-LOG_TU_Thicker-1.png" alt=""></div>
+        <p>
+          <b>สาขาวิทยาการคอมพิวเตอร์ มธ. ศูนย์รังสิต</b><br />
+          อาคารบรรยายรวม 2 ชั้น 2 คณะวิทยาศาสตร์และเทคโนโลยี<br />
+          มหาวิทยาลัยธรรมศาสตร์ ปทุมธานี 12120
+        </p>
+      </div>
+
+      <div class="fcol right">
+        <h4>ติดต่อ</h4>
+        <p>
+          โทรศัพท์: 0-2986-9164, 0-2986-9166,<br />
+          0-2986-9168-39, 0-2564-4440 ต่อ 25774<br />
+          โทรสาร: 0-2986-9157<br />
+          อีเมล: scitu_cs@scitu.tu.ac.th
+        </p>
+        <h4>ช่องทางการรับสมัคร</h4>
+        <p>
+          <a href="https://www.facebook.com/CSTUadmissioncenter">
+            CSTUadmissionscenter
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  <header class="toppage">
+      <nav aria-label="navigation">
+          <button id="btnLogout" class="btn-logout">ออกจากระบบ</button>
+      </nav>
+  </header>
+
+  <script src="script.js"></script> 
+  
+ </body>
+</html>

@@ -1,0 +1,36 @@
+services:
+  
+  mssql-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-db
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: 'YourStrong@Passw0rd'
+      MSSQL_PID: 'Express'
+	  MSSQL_DB: 'myDB1'
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - my-app-network
+
+  courses-api:
+    image: fnfo/demo1-g7:Sprint1
+    container_name: courses-container
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:sqlserver://mssql-db:1433;databaseName=myDB1;trustServerCertificate=true'
+      SPRING_DATASOURCE_USERNAME: 'sa'
+      SPRING_DATASOURCE_PASSWORD: 'YourStrong@Passw0rd'
+    networks:
+      - my-app-network
+    depends_on:
+      - mssql-db
+
+networks:
+  my-app-network:
+    driver: bridge
+
+

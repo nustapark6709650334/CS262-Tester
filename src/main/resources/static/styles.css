@@ -1,0 +1,665 @@
+:root {
+  --white: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --red: #c3002f;
+  --red2 : #6b0505;
+  --shadow-sm: 0 2px 10px rgba(15, 23, 42, .08);
+  --shadow-md: 0 12px 28px rgba(15, 23, 42, .18);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Kanit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: linear-gradient(to bottom, #5D0016 0%, #900023 30%, #C76931 65%, #D58334 80%, #E39D38 87%, #FFD13F 100%); 
+  /*background: linear-gradient(to bottom, #C2012F 0%, #79021F 100%);  แก้สีพื้นหลังใหม่ Sprint2 */
+  min-height: 100vh;
+}
+
+/* layout หลัก */
+.container {
+  max-width: 960px;
+  margin: 24px auto 48px;
+  padding: 0 16px;
+}
+
+/* ส่วนหัวเว็บไซต์ */
+.topbar {
+  text-align: center;
+  padding: 56px 16px 24px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+
+/* search input เดี่ยว (หน้า index) */
+#search-input {
+  width: 100%;
+  padding: 16px 22px;
+  border: 0;
+  outline: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  font-size: 16px;
+}
+
+#search-results {
+  margin-top: 8px;
+}
+
+.search-item {
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #b91c1c;               /* หรือสีตัวอักษรอื่น */
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+
+.search-item:hover {
+  background: #fee2e2;
+  transform: translateY(-1px);
+  transition: 0.15s ease;
+}
+
+/* title card (หน้า index) */
+.title-card {
+  position: relative;
+  border-radius: var(--radius);
+  padding: 22px 18px 26px;
+  margin: 22px 0;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background:
+    linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+    url("photo/ิbutton-bg.jpg") center/cover no-repeat;
+}
+
+.title-card h2 {
+  margin: 4px 0 10px;
+  font-size: 24px;
+}
+
+.title-card .btn {
+  display: inline-block;
+}
+
+/* การ์ดเนื้อหา ใช้หน้า indexกับ courses*/
+.card {
+  background: #fff;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: left;
+  margin: 22px 0;
+  box-shadow: var(--shadow-md);
+}
+.course-card{
+  background: #fff;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  margin: 22px 0;
+  box-shadow: var(--shadow-md);
+}
+
+.card h3,
+.course-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.card ol {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.card li {
+  margin: 10px 0;
+  line-height: 1.75;
+}
+/**/
+/* ชิปวิชา */
+.subject {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 0 4px 6px 0;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #0f172a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+
+/* ปุ่มทั่วไป */
+.btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  width: auto;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: transform .08s ease, box-shadow .2s ease, opacity .2s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* ปุ่มหลักสูตรจ้า */
+.btn--dark {
+  background: var(--red);
+  color: var(--white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+.btn--dark:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+}
+
+/* header หน้ารายวิชา */
+.toppage {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+  column-gap: 16px;
+  padding: 24px 16px 8px;
+}
+
+.toppage nav {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.toppage h2 {
+  grid-column: 2;
+  margin: 0;
+  text-align: center;
+  color: var(--white);
+}
+
+.toppage p {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  text-align: center;
+  color:var(--white);
+}
+/* ปุ่มย้อนกลับ */
+.btn-back {
+  width: auto;
+  height: 36px;
+  padding: 6px 14px;
+  margin: 0;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background:var(--red2);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* footer ทุกหน้า */
+.footer {
+  padding: 40px 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+    url("photo/footer_1.jpg") center/cover no-repeat;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
+}
+
+.footer__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  gap: 8px;
+}
+
+.fcol {
+  padding: 0 20px;
+}
+
+.logo img {
+  max-height: 60px;
+  width: auto;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .25));
+}
+
+.fcol h4 {
+  margin: .3rem 0 .2rem;
+}
+
+.fcol p {
+  margin: .2rem 0 .9rem;
+  line-height: 1.7;
+}
+
+.footer a {
+  color: #ffc525;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* search bar + ปุ่มทับ (ใช้เมื่อมี .searchbar form) */
+.searchbar {
+  position: relative;
+  max-width: 960px;
+  margin: 16px 0 8px;
+}
+
+.searchbar #search-input {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .16);
+  font-size: 16px;
+}
+
+.searchbar .btn--search {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  transform: translateY(-50%);
+  height: 53px;
+  padding: 0 24px;
+  width: 150px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== CURRICULUM PAGE (scoped) ===== */
+.curriculum header.toppage h2 {
+  font-size: 40px;
+  letter-spacing: .2px;
+}
+
+.curriculum .section-note {
+  color: var(--white);
+  opacity: .9;
+  text-align: center;
+  margin: 4px 0 8px;
+}
+
+/* กล่อง Accordion หลัก (ปี 1–4) */
+.curriculum .accord {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 0;
+  margin: 18px 0;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+.curriculum .sub-body { background: transparent; }
+
+/* ใช้ native <details> เพื่อ a11y + keyboard friendly */
+.curriculum details.accord-item {
+  border-bottom: 1px solid #eef0f3;
+}
+
+.curriculum details.accord-item:last-child {
+  border-bottom: 0;
+}
+
+/* แถบหัวข้อปี */
+.curriculum summary.accord-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  outline: none;
+}
+
+.curriculum summary.accord-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ลูกศร */
+.curriculum .chev {
+  width: 18px; height: 18px; flex: 0 0 18px;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+  opacity: .65;
+}
+.curriculum details[open] > summary .chev {
+  transform: rotate(45deg);
+}
+
+/* เนื้อหาด้านในปี */
+.curriculum .accord-body {
+  padding: 6px 20px 22px;
+}
+
+/* Sub-accordion (สหกิจ/หัวข้อพิเศษใน ปี3/ปี4) */
+.curriculum .sub-accord {
+  margin: 10px 0 4px;
+  border: 1px solid #eceff3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.curriculum details.sub-item + details.sub-item {
+  border-top: 1px solid #eceff3;
+}
+
+.curriculum summary.sub-summary {
+  list-style: none;
+  padding: 14px 16px;
+  font-weight: 700;
+  background: #fafbfc;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer;
+}
+
+.curriculum summary.sub-summary .chev {
+  border-color: #555;
+  opacity: .8;
+}
+.curriculum .sub-body {
+  padding: 12px 16px 18px;
+  background: #fff;
+}
+
+/* ตารางวิชาแบบเรียบหรู */
+.curriculum .course-list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.curriculum .course-list th,
+.curriculum .course-list td {
+  padding: 10px 6px;
+  border-bottom: 1px solid #f0f2f5;
+  vertical-align: top;
+  text-align: left;
+}
+
+.curriculum .course-list th {
+  font-size: 14px;
+  letter-spacing: .2px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.curriculum .badge-sks {
+  display: inline-block;
+  min-width: 32px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #111827;
+}
+
+/* หมายเหตุรวมหน่วยกิต */
+.curriculum .sum-note {
+  text-align: right;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #374151;
+}
+
+/* ปุ่มย้อนกลับเด่นขึ้นเล็กน้อย */
+.curriculum .btn-back {
+  background: #6b0505;  
+}
+
+/* ระยะห่างรวมเพจ */
+.curriculum .container {
+  margin-top: 6px;
+}
+
+/* การ์ดหัวข้อใหญ่ (เช่น “วิชาเลือกบังคับกลุ่ม…” หากต้องใช้เพิ่ม) */
+.curriculum .card--soft {
+  background: rgba(255,255,255,.92);
+}
+
+/* ทำให้ subject ชิปเดิมเข้ากับบรรทัด */
+.curriculum .subject {
+  margin-top: 2px;
+}
+
+/* 1. ตั้งค่า Body ของหน้าล็อกอิน */
+body.login-page {
+  /* ใช้รูปพื้นหลังที่คุณมี (footer_1.jpg) 
+    และยกเลิก background-gradient ที่มีผลกับหน้าอื่น
+  */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("photo/footer_1.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. แถบ Header สีแดง */
+.login-header {
+  width: 100%;
+  background-color: var(--red); 
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0; 
+   background: linear-gradient(to right, #C3002F, #78021E);
+}
+
+.login-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.login-header__logo {
+  height: auto; /* ปรับขนาดโลโก้ตามความเหมาะสม */
+  width: auto;
+  padding-left: 5%;
+}
+
+.login-header__title {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-left: 50px;
+  letter-spacing: 0.5px;
+}
+
+.login-container {
+  display: flex;
+  flex: 1; /* ให้ยืดเต็มพื้นที่ที่เหลือ */
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  gap: 48px;
+}
+
+/* 4. ส่วน Hero (ฝั่งซ้าย) */
+.login-hero {
+  flex-basis: 50%;
+  color: var(--white);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.login-hero h1 {
+  font-size: 3.5rem; /* 56px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.login-hero p {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* 5. การ์ดล็อกอิน (ฝั่งขวา) */
+.login-card {
+  flex-basis: 40%;
+  max-width: 420px;
+  background: var(--white);
+  border-radius: var(--radius); /* ใช้ตัวแปร radius จากไฟล์เดิม */
+  box-shadow: var(--shadow-md); /* ใช้ตัวแปร shadow จากไฟล์เดิม */
+  padding: 32px 40px;
+}
+
+.login-card h2 {
+  text-align: center;
+  font-size: 1.75rem; /* 28px */
+  margin: 0 0 8px;
+}
+
+.login-card__subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box; /* สำคัญมาก */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(195, 0, 47, 0.1);
+}
+
+/* 7. ตัวเลือก (จำฉัน & ลืมรหัส) */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: var(--red); /* ทำให้สีติ๊กถูกเป็นสีแดง */
+}
+
+.form-options a {
+  color: var(--red);
+  text-decoration: none;
+}
+.form-options a:hover {
+  text-decoration: underline;
+}
+
+/* 8. ปุ่มล็อกอิน */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+/* 9. กล่องข้อความ Error */
+.login-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+/* 10. Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 32px;
+  }
+  .login-hero {
+    display: none; /* ซ่อนข้อความฝั่งซ้ายในจอมือถือ */
+  }
+  .login-card {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+.btn-logout {
+  background-color: #880000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  position: fixed;          /* ลอยคงที่ */
+  top: 16px;
+  right: 16px;
+  z-index: 1000;            /* กันถูกภาพ/ส่วนอื่นทับ */
+}
