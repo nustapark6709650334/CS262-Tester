@@ -1,12 +1,16 @@
 {
-  "name": "cstu-auth-integration-person1",
+  "name": "cs262-tester",
   "version": "1.0.0",
-  "private": true,
-  "description": "Frontend-side integration test tooling for Person 1 (Auth & Access): Newman (Postman CLI) + Jest for login.js logic.",
+  "description": "hello",
+  "main": "index.js",
   "scripts": {
     "test:jest": "jest",
     "test:newman": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli",
-    "test:newman:html": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export evidence/postman-auth-report.html --reporter-htmlextra-title \"CSTU Auth Integration (Person 1)\""
+    "test:newman:html": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export evidence/postman-auth-report.html --reporter-htmlextra-title \"CS262 Tester - Integration Report\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nustapark6709650334/CS262-Tester.git"
   },
   "devDependencies": {
     "jest": "^29.7.0",
@@ -16,7 +20,9 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "testMatch": ["<rootDir>/src/test/js/**/*.test.js"],
+    "testMatch": [
+      "<rootDir>/src/test/js/**/*.test.js"
+    ],
     "verbose": true
   }
 }
