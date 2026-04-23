@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get; // ต้องมีอันนี้
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -21,7 +21,7 @@ import com.example.demo.model.CourseN;
 import com.example.demo.repository.CourseRepositoryN;
 
 @SpringBootTest
-@AutoConfigureMockMvc(addFilters = false) // ปิด Security เพื่อแก้ 403 Forbidden [cite: 78]
+@AutoConfigureMockMvc(addFilters = false) // ปิด Security เพื่อแก้ 403 Forbidden
 public class CourseControllerTest {
 
     @Autowired
@@ -31,19 +31,22 @@ public class CourseControllerTest {
     private CourseRepositoryS courseRepositoryS; // ตัวที่คุณใช้ทดสอบ
 
     @MockBean
-    private CourseRepositoryN courseRepositoryN; // เพิ่มตัวนี้เพื่อให้ Application Context โหลดผ่าน
+    private CourseRepositoryN courseRepositoryN; // คงไว้เพื่อให้ Application Context โหลดผ่าน (จากฝั่ง integation)
 
     @Test
     public void testSearchCourseSByCodeSuccess() throws Exception {
+        // 1. กำหนดข้อมูลสมมติ (Mock Data)
         CourseS mockCourse = new CourseS("CS101", "Introduction to CS", null, null, null, null, 0);
         
-        // Mock ให้คืนค่าเป็น List ตามที่ Repository นิยามไว้ [cite: 66]
+        // 2. Mock ให้คืนค่าเป็น List
         Mockito.when(courseRepositoryS.findByCourseNameContainingIgnoreCaseOrCourseCodeContainingIgnoreCase(anyString(), anyString()))
                .thenReturn(List.of(mockCourse));
 
-        mockMvc.perform(get("/api/coursesS") // เช็ค Path ให้ตรงกับที่ระบุใน Controller [cite: 74]
+        // 3. จำลองการเรียก API และตรวจสอบผลลัพธ์ (ดึงความละเอียดมาจากฝั่ง main)
+        mockMvc.perform(get("/api/coursesS")
                 .param("query", "CS101"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].courseCode").value("CS101"));
+                .andExpect(jsonPath("$[0].courseCode").value("CS101"))
+                .andExpect(jsonPath("$[0].courseName").value("Introduction to CS"));
     }
 }
