@@ -38,3 +38,8 @@ build/
 # Build output
 /bin/
 /target/
+
+# Node / Jest / Newman
+node_modules/
+npm-debug.log*
+evidence/

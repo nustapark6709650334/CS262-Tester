@@ -1,0 +1,22 @@
+{
+  "name": "cstu-auth-integration-person1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend-side integration test tooling for Person 1 (Auth & Access): Newman (Postman CLI) + Jest for login.js logic.",
+  "scripts": {
+    "test:jest": "jest",
+    "test:newman": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli",
+    "test:newman:html": "newman run postman/CSTU-Auth-Integration.postman_collection.json -e postman/CSTU-Auth-Local.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export evidence/postman-auth-report.html --reporter-htmlextra-title \"CSTU Auth Integration (Person 1)\""
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": ["<rootDir>/src/test/js/**/*.test.js"],
+    "verbose": true
+  }
+}
